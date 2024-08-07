@@ -1,0 +1,1 @@
+#línea de clasificación en un gráfico de dispersión que visualiza categorías a partir de una tercera columna

@@ -11,14 +11,18 @@ annual_enterprise = pd.read_csv('input/annual-enterprise-survey-2023-financial-y
 print(annual_enterprise.head())
 
 annual_enterprise['Units'] = pd.Categorical(annual_enterprise['Units'])#series... no necesita conversion
-annual_enterprise['Variable_code'] = pd.Categorical(annual_enterprise['Variable_code'])
+annual_enterprise['Industry_name_NZSIOC'] = pd.Categorical(annual_enterprise['Industry_name_NZSIOC'])
 
 # Únicamente los contadores enteros de cada categoría y convertir a numpy arreglos
 units_codes = annual_enterprise['Units'].cat.codes.to_numpy()
-variable_codes = annual_enterprise['Variable_code'].cat.codes.to_numpy()
+variable_codes = annual_enterprise['Industry_name_NZSIOC'].cat.codes.to_numpy()
 
 #print(units_codes)
 #print(variable_codes)
+
+industry_name = annual_enterprise['Industry_name_NZSIOC'].unique()
+
+print(industry_name)
 
 # Crear valores aleatorios para colores y áreas
 N = len(annual_enterprise)
@@ -31,7 +35,7 @@ scatter = plt.scatter(units_codes, variable_codes, s=area, c=colors, alpha=0.5, 
 
 # Añadir etiquetas y título
 plt.xlabel('Units')
-plt.ylabel('Variable Code')
+plt.ylabel('Industry Name NZSIOC')
 plt.title('Scatter Plot de Annual Enterprise Survey')
 
 # Mostrar la gráfica
