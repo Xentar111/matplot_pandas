@@ -14,11 +14,11 @@ annual_enterprise['Units'] = pd.Categorical(annual_enterprise['Units'])#series..
 annual_enterprise['Variable_code'] = pd.Categorical(annual_enterprise['Variable_code'])
 
 # Únicamente los contadores enteros de cada categoría y convertir a numpy arreglos
-units_codes = annual_enterprise['Units'].cat.codes
-variable_codes = annual_enterprise['Variable_code'].cat.codes
+units_codes = annual_enterprise['Units'].cat.codes.to_numpy()
+variable_codes = annual_enterprise['Variable_code'].cat.codes.to_numpy()
 
-print(units_codes)
-print(variable_codes)
+#print(units_codes)
+#print(variable_codes)
 
 # Crear valores aleatorios para colores y áreas
 N = len(annual_enterprise)
@@ -27,7 +27,7 @@ area = (30 * np.random.rand(N)) ** 2
 
 # Crear el gráfico de dispersión
 plt.figure(figsize=(10, 6))
-#scatter = plt.scatter( s=area, c=colors, alpha=0.5, marker='v')
+scatter = plt.scatter(units_codes, variable_codes, s=area, c=colors, alpha=0.5, marker='.')
 
 # Añadir etiquetas y título
 plt.xlabel('Units')
