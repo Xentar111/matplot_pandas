@@ -1,5 +1,6 @@
 import matplotlib.pyplot as plt
 import pandas as pd
+import numpy as np
 
 food_price = pd.read_csv('input/food-price-index-september-2023-weighted-average-prices.csv')
 
@@ -29,8 +30,14 @@ filter_df = filter_df.sort_values(by='Period')
 
 print(filter_df.head())
 
-plt.bar(filter_df['Period'], filter_df['Data_value'], width=0.8)
+#plt.bar(filter_df['Period'], filter_df['Data_value'], width=0.8)
+#plt.xlabel('Data Value')
+#plt.ylabel('Period')
+#plt.title('Orange Price')
+#plt.show()
+
+plt.hist(filter_df['Data_value'])#, bins=np.unique(filter_df['Period']))
+print(filter_df.tail())
 plt.xlabel('Data Value')
 plt.ylabel('Period')
-plt.title('Orange Price')
 plt.show()
