@@ -14,7 +14,7 @@ filter_df = food_price[food_price['Series_reference'] == 'CPIM.SAP0100']
 print(filter_df.head())
 print(filter_df.shape)
 
-print(pd.to_datetime(filter_df['Period'], format='%Y.%m'))
+#print(pd.to_datetime(filter_df['Period'], format='%Y.%m'))
 """ 
 ValueError: time data "2006" doesn't match format "%Y.%m", at position 0. You might want to try:
     - passing `format` if your strings have a consistent format;
@@ -27,4 +27,10 @@ ValueError: time data "2006" doesn't match format "%Y.%m", at position 0. You mi
 
 filter_df = filter_df.sort_values(by='Period')
 
+print(filter_df.head())
 
+plt.bar(filter_df['Period'], filter_df['Data_value'], width=0.8)
+plt.xlabel('Data Value')
+plt.ylabel('Period')
+plt.title('Orange Price')
+plt.show()
